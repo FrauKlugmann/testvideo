@@ -1,0 +1,484 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hefter-Eintrag · Sinus, Kosinus und Tangens</title><style>:root{--g:#00805F;--gl:#D3F2E5}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font-family:Arial,"Liberation Sans",Helvetica,sans-serif}
+.page{font-size:var(--fs);line-height:1.35}
+.title{background:var(--g);color:#fff;font-weight:bold;font-size:1.45em;padding:.35em .7em;border-radius:3px}
+.zn{font-weight:bold;font-size:.95em;padding:.3em .1em .45em}
+.box{border:2px solid var(--g);border-radius:4px;margin:0 0 .55em;break-inside:avoid}
+.box>h3{background:var(--gl);margin:0;padding:.2em .6em;font-size:1em;border-bottom:2px solid var(--g)}
+.box .in{padding:.35em .6em .4em}
+.box p{margin:.25em 0}
+.f{display:inline-block;vertical-align:baseline;border:0;border-bottom:1.5px solid #222;height:1.45em;min-width:1em;margin:0 .12em;padding:0 .1em;font:inherit;text-align:center;background:transparent;border-radius:0;color:#1565C0;font-weight:bold;outline:none}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55em}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55em}
+.trenn{border-top:1.5px dashed #9cc9b8;margin-top:.45em;padding-top:.4em}
+.card{border:1.5px solid var(--g);border-radius:6px;padding:.3em .5em .45em}
+.card h4{margin:0 0 .3em;font-size:1em;color:var(--g);border-bottom:1.5px solid var(--gl);padding-bottom:.15em}
+.chip{display:block;margin:.3em 0}
+.sq{display:inline-block;width:.9em;height:.35em;border-radius:2px;margin-right:.4em;vertical-align:middle}
+.kr{font-size:.8em;margin-right:.2em}
+.formel{margin-top:.2em;padding:.3em .5em;background:#f2f2f2;border-radius:5px;font-weight:bold;text-align:center;line-height:1.5}
+.fz{margin-top:.45em;border:1.5px dashed var(--g);border-radius:6px;padding:.3em .6em;text-align:center;font-weight:bold;background:#fffdf0;font-size:.95em}
+.kl{font-size:.88em;margin:.3em 0 0}
+.rund{margin-top:.45em;border:1.5px solid #888;border-radius:6px;padding:.25em .45em;font-size:.88em}
+.rund .tb{margin-top:.2em}
+.bsp{display:flex;gap:.6em;align-items:center}
+.bsp>div:last-child{flex:1;min-width:0}
+.bsp.col{flex-direction:column;align-items:flex-start}
+.bsp.col .fig{align-self:center}
+.bsp.col{display:grid;grid-template-columns:auto 1fr;align-items:center}
+.bsp3 .fig svg{display:block;margin:0 auto}
+.zl{margin:.28em 0;white-space:nowrap}
+.fr .f{border:1.5px solid #9a9a9a;border-radius:3px;height:1.3em;margin:.08em .1em}
+.card .zl{white-space:normal}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .15em;line-height:1.1}
+.nu{border-bottom:1.5px solid #000;padding:0 .2em .1em}.de{padding:.1em .2em 0}
+.tb{border-collapse:collapse;width:100%}
+.tb th,.tb td{border:1px solid #000;padding:.15em .45em;text-align:center}
+.tb th{background:#F2F2F2}
+.foot{text-align:right;font-style:italic;color:#555;font-size:.75em;margin-top:.3em}
+svg .seite{transition:stroke .15s}
+@media screen{
+ :root{--fs:19px}
+ .bar{position:sticky;top:0;z-index:10;background:#fff;border-bottom:2px solid #ddd;padding:8px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+ .bar button{font:inherit;font-size:16px;border:2px solid var(--g);background:#fff;color:#000;border-radius:8px;padding:8px 16px;cursor:pointer}
+ .bar .tab.on{background:var(--g);color:#fff;font-weight:bold}
+ .bar .sp{flex:1}.bar .hinw{font-size:14px;color:#555}
+ .bar button.warn{background:#C62828;border-color:#C62828;color:#fff;font-weight:bold}
+ .wrap{max-width:1100px;margin:0 auto;padding:14px 18px 40px}
+ .page{display:none}
+ .col .fig svg{width:200px!important} .bsp3 .fig svg{width:230px!important} .figm svg{width:200px!important}
+ input.f:focus{background:#FFFDE7;box-shadow:0 0 0 2px #FDD835}
+ @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr!important}.zl{white-space:normal}}
+}
+@page{size:A4;margin:1.0cm 1.5cm 0.9cm 2.5cm}
+@page :left{margin-left:1.5cm;margin-right:2.5cm}
+@page :right{margin-left:2.5cm;margin-right:1.5cm}
+@media print{
+ :root{--fs:13.4px}
+ .col .fig svg{width:120px!important} .bsp3 .fig svg{width:150px!important} .figm svg{width:125px!important}
+ #z1{--fs:11.8px} #z1 .box p{margin:.06em 0} #z1 .trenn{margin-top:.25em;padding-top:.2em} #z1 .col .fig svg{width:100px!important} #z1 .bsp3 .fig svg{width:92px!important} #z4 .bsp3 .fig svg{width:118px!important} #z4 .figm svg{width:105px!important} #z1 .figm svg{width:110px!important} #z1 .fr .f{height:1.15em}
+ #z3{--fs:15.6px} #z4{--fs:13.4px} #z3 .bsp3 .fig svg{width:185px!important} #z3 .figm svg{width:170px!important}
+ .schild img{width:64px!important} .steig svg{width:160px!important}
+ .box{margin-bottom:.45em}
+ .zl{margin:.1em 0} .box p{margin:.12em 0} .box .in{padding:.22em .45em .28em}
+ .bar{display:none}.wrap{padding:0;max-width:none}
+ .page{display:block!important;break-after:page;page-break-after:always}
+ .page:last-of-type{break-after:auto;page-break-after:auto}
+ .f{color:#000}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.key{display:inline-block;border:1.5px solid #333;border-bottom-width:3px;border-radius:5px;padding:0 .35em;font-size:.82em;font-weight:bold;background:#f4f4f4;line-height:1.35;margin:0 .05em}
+.tasten{font-size:.85em;margin:.25em 0;line-height:1.7;white-space:normal}
+.fr .f{text-align:center}
+</style><style id="video-style">
+.videoctl{position:sticky;top:60px;z-index:12;background:#fff;padding:6px 8px;border:1.5px solid #00805F;border-radius:8px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:6px 0 8px;font:15px Arial,sans-serif}
+.videoctl button{font:inherit;font-weight:bold;border:1.5px solid #00805F;background:#fff;color:#000;border-radius:7px;padding:7px 12px;cursor:pointer}
+.videoctl button:disabled{opacity:.4;cursor:default}
+.videoctl .go{background:#00805F;color:#fff}.videoctl .go.warn{background:#C62828;border-color:#C62828}
+.videoctl .hint{color:#444;flex-basis:100%}
+.videoctl select{font:inherit;padding:5px;border:1.5px solid #00805F;border-radius:6px;background:#fff;max-width:16em}
+.videoctl .status{color:#555;font-size:13px}
+.speaking{background:#FFF2BD!important;box-shadow:0 0 0 3px #E9B72B!important;border-radius:4px}
+svg .seite.vglow{animation:vglow .9s ease-in-out infinite}
+@keyframes vglow{50%{stroke-width:10}}
+input.f,.box{scroll-margin-top:150px}
+@media print{.videoctl{display:none!important}}
+</style></head><body>
+<div class="bar"><button class="tab" data-p="z1">Z1 + Z2</button><button class="tab" data-p="z3">Z3</button><button class="tab" data-p="z4">Z4</button><span class="hinw">Seiten antippen: <b style="color:#C62828">rot</b> = Hypotenuse, <b style="color:#1565C0">blau</b> = Gegenkathete, <b style="color:#2E7D32">grün</b> = Ankathete</span><span class="sp"></span><button id="clr1">Seite leeren</button><button id="clrA">Alles löschen</button></div>
+<div class="wrap"><section class="page" id="z1"><div class="title">Gegenkathete, Ankathete und Sinus</div>
+<div class="zn">Z1 · Ich kann die Begriffe Hypotenuse, Ankathete und Gegenkathete korrekt zuordnen.<br>Z2 · Ich kann den Sinus zu einem Winkel korrekt aufstellen und zu Berechnungen nutzen.</div>
+<div class="box"><h3>Merke</h3><div class="in"><div class="grid2">
+ <div class="card"><h4>Die Seiten zum Winkel α</h4><div class="bsp"><div class="figm" data-fk="z1-f0" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.08], "wk": 0, "wl": "α", "farbe": {"c": "#C62828", "a": "#1565C0", "b": "#2E7D32"}, "w": 170}'></div><div>
+  <p class="chip"><i class="sq" style="background:#C62828"></i>gegenüber dem rechten Winkel: <input class="f" data-k="z1-0" data-l="Hypotenuse" style="width:6.5em" aria-label="Lücke"></p>
+  <p class="chip"><i class="sq" style="background:#1565C0"></i>Kathete gegenüber vom Winkel: <input class="f" data-k="z1-1" data-l="Gegenkathete" style="width:6.5em" aria-label="Lücke"></p>
+  <p class="chip"><i class="sq" style="background:#2E7D32"></i>Kathete, die am Winkel anliegt: <input class="f" data-k="z1-2" data-l="Ankathete" style="width:6.5em" aria-label="Lücke"></p></div></div>
+  <div class="fz">Gegenkathete und Ankathete hängen vom <input class="f" data-k="z1-3" data-l="Winkel" style="width:5em" aria-label="Lücke"> ab.</div></div>
+ <div class="card"><h4>Der Sinus</h4>
+  <div class="formel" style="font-size:1.1em">sin α = <span class="fr"><span class="nu"><input class="f" data-k="z1-4" data-l="Gegenkathete" style="width:7em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-5" data-l="Hypotenuse" style="width:7em" aria-label="Lücke"></span></span></div>
+  <p class="zl" style="margin-top:.4em">Seite gesucht: a = <input class="f" data-k="z1-6" data-l="c" style="width:1.6em" aria-label="Lücke"> · sin α &nbsp;·&nbsp; c = a <input class="f" data-k="z1-7" data-l="÷" style="width:1.4em" aria-label="Lücke"> sin α</p>
+  <p class="zl">Winkel gesucht: α = <input class="f" data-k="z1-8" data-l="sin⁻¹" style="width:3em" aria-label="Lücke">(<span class="fr"><span class="nu"><input class="f" data-k="z1-9" data-l="a" style="width:6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-10" data-l="c" style="width:6em" aria-label="Lücke"></span></span>)</p>
+  <div class="rund"><b>So runden wir</b><table class="tb"><tr><th>Winkel</th><th>cm</th><th>m</th><th>km</th></tr><tr><td>auf ganze Grad</td><td>auf mm<br>(1 Stelle nach dem Komma)</td><td>auf cm<br>(2 Stellen)</td><td>auf m<br>(3 Stellen)</td></tr></table><p class="kl">Zwischenergebnisse nicht runden · Taschenrechner auf <b>D</b> (Gradmaß), CAS-Rechner auf <b>360°</b></p></div></div>
+</div></div></div>
+<div class="box"><h3>Musterbeispiele</h3><div class="in"><div class="grid2">
+ <div class="bsp col"><div class="fig" data-fk="z1-f1" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.08], "wk": 0, "wl": "α", "w": 175, "klick": true}'></div><div><p class="zl">Rechter Winkel bei <input class="f" data-k="z1-11" data-l="C" style="width:1.6em" aria-label="Lücke"> · Winkel α</p><p class="zl"><span class="kr" style="color:#C62828">■</span> Hypotenuse: <input class="f" data-k="z1-12" data-l="c" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#1565C0">■</span> Gegenkathete: <input class="f" data-k="z1-13" data-l="a" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#2E7D32">■</span> Ankathete: <input class="f" data-k="z1-14" data-l="b" style="width:1.6em" aria-label="Lücke"></p><p class="zl">sin α = <span class="fr"><span class="nu"><input class="f" data-k="z1-15" data-l="a" style="width:1.6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-16" data-l="c" style="width:1.6em" aria-label="Lücke"></span></span></p></div></div>
+ <div class="bsp col"><div class="fig" data-fk="z1-f2" data-o='{"e": ["D", "E", "F"], "r": 1, "L": [2.8, 4.0], "rot": 200, "wk": 0, "wl": "δ", "w": 175, "klick": true}'></div><div><p class="zl">Rechter Winkel bei <input class="f" data-k="z1-17" data-l="E" style="width:1.6em" aria-label="Lücke"> · Winkel δ</p><p class="zl"><span class="kr" style="color:#C62828">■</span> Hypotenuse: <input class="f" data-k="z1-18" data-l="e" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#1565C0">■</span> Gegenkathete: <input class="f" data-k="z1-19" data-l="d" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#2E7D32">■</span> Ankathete: <input class="f" data-k="z1-20" data-l="f" style="width:1.6em" aria-label="Lücke"></p><p class="zl">sin δ = <span class="fr"><span class="nu"><input class="f" data-k="z1-21" data-l="d" style="width:1.6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-22" data-l="e" style="width:1.6em" aria-label="Lücke"></span></span></p></div></div>
+</div><div class="grid3 trenn">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z1-f3" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.081], "s": {"c": "8 cm", "a": "?", "b": ""}, "wk": 0, "wl": "35°", "w": 175, "klick": true}'></div><p class="zl">sin 35° = <span class="fr"><span class="nu"><input class="f" data-k="z1-23" data-l="a" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-24" data-l="8 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">a = <input class="f" data-k="z1-25" data-l="8 cm · sin 35°" style="width:8em" aria-label="Lücke"></p><p class="zl">a ≈ <input class="f" data-k="z1-26" data-l="4,6 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Hypotenuse gesucht</b></p><div class="fig" data-fk="z1-f4" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.692], "s": {"a": "6 cm", "c": "?", "b": ""}, "wk": 0, "wl": "40°", "w": 175, "klick": true}'></div><p class="zl">sin 40° = <span class="fr"><span class="nu"><input class="f" data-k="z1-27" data-l="6 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-28" data-l="c" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">c = <input class="f" data-k="z1-29" data-l="6 cm ÷ sin 40°" style="width:8em" aria-label="Lücke"></p><p class="zl">c ≈ <input class="f" data-k="z1-30" data-l="9,3 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z1-f5" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.3], "s": {"a": "3 cm", "c": "5 cm", "b": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">sin α = <span class="fr"><span class="nu"><input class="f" data-k="z1-31" data-l="3 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-32" data-l="5 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">α = sin⁻¹(<span class="fr"><span class="nu"><input class="f" data-k="z1-33" data-l="3 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-34" data-l="5 cm" style="width:3.8em" aria-label="Lücke"></span></span>)</p><p class="tasten">Taschenrechner: Bruch eingeben <span class="key">=</span> → <span class="key">SHIFT</span> <span class="key">SIN</span> <span class="key">Ans</span> <span class="key">=</span></p><p class="zl">α ≈ <input class="f" data-k="z1-35" data-l="37°" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<div class="box"><h3>Jetzt ihr</h3><div class="in"><div class="grid2">
+ <div class="bsp col"><div class="fig" data-fk="z1-f6" data-o='{"e": ["K", "L", "M"], "r": 0, "L": [4.2, 2.8], "rot": 160, "wk": 1, "wl": "λ", "w": 175, "klick": true}'></div><div><p class="zl">Rechter Winkel bei <input class="f" data-k="z1-36" style="width:1.6em" aria-label="Lücke"> · Winkel λ</p><p class="zl"><span class="kr" style="color:#C62828">■</span> Hypotenuse: <input class="f" data-k="z1-37" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#1565C0">■</span> Gegenkathete: <input class="f" data-k="z1-38" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#2E7D32">■</span> Ankathete: <input class="f" data-k="z1-39" style="width:1.6em" aria-label="Lücke"></p><p class="zl">sin λ = <span class="fr"><span class="nu"><input class="f" data-k="z1-40" style="width:1.6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-41" style="width:1.6em" aria-label="Lücke"></span></span></p></div></div>
+ <div class="bsp col"><div class="fig" data-fk="z1-f7" data-o='{"e": ["X", "Y", "Z"], "r": 1, "L": [2.6, 4.2], "rot": 120, "wk": 2, "wl": "ζ", "w": 175, "klick": true}'></div><div><p class="zl">Rechter Winkel bei <input class="f" data-k="z1-42" style="width:1.6em" aria-label="Lücke"> · Winkel ζ</p><p class="zl"><span class="kr" style="color:#C62828">■</span> Hypotenuse: <input class="f" data-k="z1-43" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#1565C0">■</span> Gegenkathete: <input class="f" data-k="z1-44" style="width:1.6em" aria-label="Lücke"></p><p class="zl"><span class="kr" style="color:#2E7D32">■</span> Ankathete: <input class="f" data-k="z1-45" style="width:1.6em" aria-label="Lücke"></p><p class="zl">sin ζ = <span class="fr"><span class="nu"><input class="f" data-k="z1-46" style="width:1.6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-47" style="width:1.6em" aria-label="Lücke"></span></span></p></div></div>
+</div><div class="grid3 trenn">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z1-f8" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [4.29, 3.6], "s": {"s": "12 cm", "r": "?", "t": ""}, "wk": 0, "wl": "50°", "w": 175, "klick": true}'></div><p class="zl">sin 50° = <span class="fr"><span class="nu"><input class="f" data-k="z1-48" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-49" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">r = <input class="f" data-k="z1-50" style="width:8em" aria-label="Lücke"></p><p class="zl">r ≈ <input class="f" data-k="z1-51" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Hypotenuse gesucht</b></p><div class="fig" data-fk="z1-f9" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [1.679, 3.6], "s": {"r": "5 cm", "s": "?", "t": ""}, "wk": 0, "wl": "25°", "w": 175, "klick": true}'></div><p class="zl">sin 25° = <span class="fr"><span class="nu"><input class="f" data-k="z1-52" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-53" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">s = <input class="f" data-k="z1-54" style="width:8em" aria-label="Lücke"></p><p class="zl">s ≈ <input class="f" data-k="z1-55" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z1-f10" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [3.528, 3.6], "s": {"r": "7 cm", "s": "10 cm", "t": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">sin ρ = <span class="fr"><span class="nu"><input class="f" data-k="z1-56" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z1-57" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">ρ ≈ <input class="f" data-k="z1-58" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<p class="foot">Erstellt von Marion Klugmann (November 2026) mit freundlicher Unterstützung von Claude.</p></section><section class="page" id="z3"><div class="title">Der Kosinus</div>
+<div class="zn">Z3 · Ich kann den Kosinus zu einem Winkel korrekt aufstellen und zu Berechnungen nutzen.</div>
+<div class="box"><h3>Merke</h3><div class="in"><div class="grid2" style="grid-template-columns:auto 1fr">
+ <div class="figm" data-fk="z3-f0" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.08], "wk": 0, "wl": "α", "farbe": {"c": "#C62828", "a": "#1565C0", "b": "#2E7D32"}, "w": 190}'></div>
+ <div><div class="formel" style="font-size:1.1em">cos α = <span class="fr"><span class="nu"><input class="f" data-k="z3-0" data-l="Ankathete" style="width:7em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-1" data-l="Hypotenuse" style="width:7em" aria-label="Lücke"></span></span></div>
+ <p class="zl" style="margin-top:.4em">Seite gesucht: b = <input class="f" data-k="z3-2" data-l="c" style="width:1.6em" aria-label="Lücke"> · cos α &nbsp;·&nbsp; c = b <input class="f" data-k="z3-3" data-l="÷" style="width:1.4em" aria-label="Lücke"> cos α</p>
+ <p class="zl">Winkel gesucht: α = <input class="f" data-k="z3-4" data-l="cos⁻¹" style="width:3em" aria-label="Lücke">(<span class="fr"><span class="nu"><input class="f" data-k="z3-5" data-l="b" style="width:6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-6" data-l="c" style="width:6em" aria-label="Lücke"></span></span>)</p>
+ <div class="fz">Runden wie auf Seite 1: Winkel auf ganze Grad, cm auf mm.</div></div>
+</div></div></div>
+<div class="box"><h3>Musterbeispiele</h3><div class="in"><div class="grid3">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z3-f1" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.081], "s": {"c": "8 cm", "b": "?", "a": ""}, "wk": 0, "wl": "35°", "w": 175, "klick": true}'></div><p class="zl">cos 35° = <span class="fr"><span class="nu"><input class="f" data-k="z3-7" data-l="b" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-8" data-l="8 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">b = <input class="f" data-k="z3-9" data-l="8 cm · cos 35°" style="width:8em" aria-label="Lücke"></p><p class="zl">b ≈ <input class="f" data-k="z3-10" data-l="6,6 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Hypotenuse gesucht</b></p><div class="fig" data-fk="z3-f2" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.692], "s": {"b": "6 cm", "c": "?", "a": ""}, "wk": 0, "wl": "40°", "w": 175, "klick": true}'></div><p class="zl">cos 40° = <span class="fr"><span class="nu"><input class="f" data-k="z3-11" data-l="6 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-12" data-l="c" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">c = <input class="f" data-k="z3-13" data-l="6 cm ÷ cos 40°" style="width:8em" aria-label="Lücke"></p><p class="zl">c ≈ <input class="f" data-k="z3-14" data-l="7,8 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z3-f3" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.3], "s": {"b": "4 cm", "c": "5 cm", "a": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">cos α = <span class="fr"><span class="nu"><input class="f" data-k="z3-15" data-l="4 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-16" data-l="5 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">α = cos⁻¹(<span class="fr"><span class="nu"><input class="f" data-k="z3-17" data-l="4 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-18" data-l="5 cm" style="width:3.8em" aria-label="Lücke"></span></span>)</p><p class="tasten">Taschenrechner: Bruch eingeben <span class="key">=</span> → <span class="key">SHIFT</span> <span class="key">COS</span> <span class="key">Ans</span> <span class="key">=</span></p><p class="zl">α ≈ <input class="f" data-k="z3-19" data-l="37°" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<div class="box"><h3>Jetzt ihr</h3><div class="in"><div class="grid3">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z3-f4" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [4.29, 3.6], "s": {"s": "12 cm", "t": "?", "r": ""}, "wk": 0, "wl": "50°", "w": 175, "klick": true}'></div><p class="zl">cos 50° = <span class="fr"><span class="nu"><input class="f" data-k="z3-20" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-21" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">t = <input class="f" data-k="z3-22" style="width:8em" aria-label="Lücke"></p><p class="zl">t ≈ <input class="f" data-k="z3-23" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Hypotenuse gesucht</b></p><div class="fig" data-fk="z3-f5" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [1.679, 3.6], "s": {"t": "5 cm", "s": "?", "r": ""}, "wk": 0, "wl": "25°", "w": 175, "klick": true}'></div><p class="zl">cos 25° = <span class="fr"><span class="nu"><input class="f" data-k="z3-24" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-25" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">s = <input class="f" data-k="z3-26" style="width:8em" aria-label="Lücke"></p><p class="zl">s ≈ <input class="f" data-k="z3-27" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z3-f6" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [3.672, 3.6], "s": {"t": "7 cm", "s": "10 cm", "r": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">cos ρ = <span class="fr"><span class="nu"><input class="f" data-k="z3-28" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z3-29" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">ρ ≈ <input class="f" data-k="z3-30" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<p class="foot">Erstellt von Marion Klugmann (November 2026) mit freundlicher Unterstützung von Claude.</p></section><section class="page" id="z4"><div class="title">Der Tangens</div>
+<div class="zn">Z4 · Ich kann den Tangens zu einem Winkel korrekt aufstellen und zu Berechnungen nutzen.</div>
+<div class="box"><h3>Merke</h3><div class="in"><div class="grid2">
+ <div class="card"><h4>Der Tangens</h4><div class="bsp"><div class="figm" data-fk="z4-f0" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.08], "wk": 0, "wl": "α", "farbe": {"c": "#C62828", "a": "#1565C0", "b": "#2E7D32"}, "w": 150}'></div><div>
+  <div class="formel" style="font-size:1.05em">tan α = <span class="fr"><span class="nu"><input class="f" data-k="z4-0" data-l="Gegenkathete" style="width:6.5em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-1" data-l="Ankathete" style="width:6.5em" aria-label="Lücke"></span></span></div></div></div>
+  <p class="zl">Seite gesucht: a = <input class="f" data-k="z4-2" data-l="b" style="width:1.6em" aria-label="Lücke"> · tan α &nbsp;·&nbsp; b = a <input class="f" data-k="z4-3" data-l="÷" style="width:1.4em" aria-label="Lücke"> tan α</p>
+  <p class="zl">Winkel gesucht: α = <input class="f" data-k="z4-4" data-l="tan⁻¹" style="width:3em" aria-label="Lücke">(<span class="fr"><span class="nu"><input class="f" data-k="z4-5" data-l="a" style="width:6em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-6" data-l="b" style="width:6em" aria-label="Lücke"></span></span>)</p>
+  <p class="kl">Die Hypotenuse kommt im Tangens <input class="f" data-k="z4-7" data-l="nicht" style="width:3.5em" aria-label="Lücke"> vor. · Runden wie auf Seite 1.</p></div>
+ <div class="card"><h4>Steigung in Prozent</h4><div class="bsp"><div class="schild"></div><div class="steig"></div></div>
+  <p class="zl">12 % Steigung: Auf <input class="f" data-k="z4-8" data-l="100 m" style="width:2.6em" aria-label="Lücke"> waagerecht steigt die Straße <input class="f" data-k="z4-9" data-l="12 m" style="width:2.2em" aria-label="Lücke">.</p>
+  <p class="zl">tan α = <span class="fr"><span class="nu"><input class="f" data-k="z4-10" data-l="12" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-11" data-l="100" style="width:3.8em" aria-label="Lücke"></span></span> &nbsp;→&nbsp; α ≈ <input class="f" data-k="z4-12" data-l="7°" style="width:3em" aria-label="Lücke"></p>
+  <div class="fz">Falle: Die 100 m werden <input class="f" data-k="z4-13" data-l="waagerecht" style="width:5.5em" aria-label="Lücke"> gemessen, nicht entlang der Straße.</div></div>
+</div></div></div>
+<div class="box"><h3>Musterbeispiele</h3><div class="in"><div class="grid3">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z4-f1" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.081], "s": {"b": "6 cm", "a": "?", "c": ""}, "wk": 0, "wl": "35°", "w": 175, "klick": true}'></div><p class="zl">tan 35° = <span class="fr"><span class="nu"><input class="f" data-k="z4-14" data-l="a" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-15" data-l="6 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">a = <input class="f" data-k="z4-16" data-l="6 cm · tan 35°" style="width:8em" aria-label="Lücke"></p><p class="zl">a ≈ <input class="f" data-k="z4-17" data-l="4,2 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Ankathete gesucht</b></p><div class="fig" data-fk="z4-f2" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.692], "s": {"a": "6 cm", "b": "?", "c": ""}, "wk": 0, "wl": "40°", "w": 175, "klick": true}'></div><p class="zl">tan 40° = <span class="fr"><span class="nu"><input class="f" data-k="z4-18" data-l="6 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-19" data-l="b" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">b = <input class="f" data-k="z4-20" data-l="6 cm ÷ tan 40°" style="width:8em" aria-label="Lücke"></p><p class="zl">b ≈ <input class="f" data-k="z4-21" data-l="7,2 cm" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z4-f3" data-o='{"e": ["A", "B", "C"], "r": 2, "L": [4.4, 3.3], "s": {"a": "3 cm", "b": "4 cm", "c": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">tan α = <span class="fr"><span class="nu"><input class="f" data-k="z4-22" data-l="3 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-23" data-l="4 cm" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">α = tan⁻¹(<span class="fr"><span class="nu"><input class="f" data-k="z4-24" data-l="3 cm" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-25" data-l="4 cm" style="width:3.8em" aria-label="Lücke"></span></span>)</p><p class="tasten">Taschenrechner: Bruch eingeben <span class="key">=</span> → <span class="key">SHIFT</span> <span class="key">TAN</span> <span class="key">Ans</span> <span class="key">=</span></p><p class="zl">α ≈ <input class="f" data-k="z4-26" data-l="37°" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<div class="box"><h3>Jetzt ihr</h3><div class="in"><div class="grid3">
+ <div class="bsp3"><p class="zl"><b>Seite gesucht</b></p><div class="fig" data-fk="z4-f4" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [4.29, 3.6], "s": {"t": "8 cm", "r": "?", "s": ""}, "wk": 0, "wl": "50°", "w": 175, "klick": true}'></div><p class="zl">tan 50° = <span class="fr"><span class="nu"><input class="f" data-k="z4-27" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-28" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">r = <input class="f" data-k="z4-29" style="width:8em" aria-label="Lücke"></p><p class="zl">r ≈ <input class="f" data-k="z4-30" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Ankathete gesucht</b></p><div class="fig" data-fk="z4-f5" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [1.679, 3.6], "s": {"r": "5 cm", "t": "?", "s": ""}, "wk": 0, "wl": "25°", "w": 175, "klick": true}'></div><p class="zl">tan 25° = <span class="fr"><span class="nu"><input class="f" data-k="z4-31" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-32" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">t = <input class="f" data-k="z4-33" style="width:8em" aria-label="Lücke"></p><p class="zl">t ≈ <input class="f" data-k="z4-34" style="width:4em" aria-label="Lücke"></p></div>
+ <div class="bsp3"><p class="zl"><b>Winkel gesucht</b></p><div class="fig" data-fk="z4-f6" data-o='{"e": ["R", "S", "T"], "r": 1, "L": [2.52, 3.6], "s": {"r": "7 cm", "t": "10 cm", "s": ""}, "wk": 0, "wl": "?", "w": 175, "klick": true}'></div><p class="zl">tan ρ = <span class="fr"><span class="nu"><input class="f" data-k="z4-35" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-36" style="width:3.8em" aria-label="Lücke"></span></span></p><p class="zl">ρ ≈ <input class="f" data-k="z4-37" style="width:3em" aria-label="Lücke"></p></div>
+</div></div></div>
+<div class="box"><h3>Auflösung: Welche Rampe ist am steilsten?</h3><div class="in"><table class="tb"><tr><th>Rampe</th><th>gegeben</th><th>Rechnung</th><th>Winkel</th></tr>
+<tr><td>Holzrampe</td><td>Höhe 1 m, Fahrbahn 3 m</td><td><input class="f" data-k="z4-38" data-l="sin" style="width:2.4em" aria-label="Lücke"> α = <span class="fr"><span class="nu"><input class="f" data-k="z4-39" data-l="1" style="width:3.8em" aria-label="Lücke"></span><span class="de"><input class="f" data-k="z4-40" data-l="3" style="width:3.8em" aria-label="Lücke"></span></span></td><td>α ≈ <input class="f" data-k="z4-41" data-l="19°" style="width:3em" aria-label="Lücke"></td></tr>
+<tr><td>Betonrampe</td><td>Steigung 30 %</td><td><input class="f" data-k="z4-42" data-l="tan" style="width:2.4em" aria-label="Lücke"> α = <input class="f" data-k="z4-43" data-l="0,30" style="width:3.8em" aria-label="Lücke"></td><td>α ≈ <input class="f" data-k="z4-44" data-l="17°" style="width:3em" aria-label="Lücke"></td></tr>
+<tr><td>Metallrampe</td><td>Winkel 15°</td><td>–</td><td>α = 15°</td></tr></table>
+<p class="zl">Am steilsten ist die <input class="f" data-k="z4-45" data-l="Holzrampe" style="width:7em" aria-label="Lücke">. Die Fahrbahn ist die <input class="f" data-k="z4-46" data-l="Hypotenuse" style="width:6.5em" aria-label="Lücke">, darum rechnet man mit dem <input class="f" data-k="z4-47" data-l="Sinus" style="width:4.5em" aria-label="Lücke">.</p></div></div>
+<p class="foot">Erstellt von Marion Klugmann (November 2026) mit freundlicher Unterstützung von Claude.</p></section></div><script>const SCHILD="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";
+/* ─── Geometrie-Helfer „Rechtwinklige Dreiecke“ (Arbeitsblattvorlage: rechter Winkel mit Bogen und Punkt, Ecken gegen den Uhrzeigersinn, Seite gegenüber der gleichnamigen Ecke) ─── */
+const gU=(x,y)=>{const l=Math.hypot(x,y)||1;return[x/l,y/l];};
+const gE=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const gZ=(x,d)=>{const f=Math.pow(10,d==null?1:d);return String(Math.round(x*f)/f).replace(".",",");};
+function gT(x,y,s,o){o=o||{};return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" font-size="'+(o.size||16)+'" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" fill="'+(o.fill||"#000")+'"'+(o.bold?' font-weight="700"':'')+(o.it?' font-style="italic"':'')+'>'+gE(s)+'</text>';}
+/* rtSvg({e:["A","B","C"], r:2, L:[4,3], rot:0, s:{a:"5 cm"}, farbe:{c:"#C62828"}, klick:false, w:260})
+   e = Ecken gegen den Uhrzeigersinn · r = Index der Ecke mit dem rechten Winkel · L = [Länge zur nächsten Ecke, Länge zur übernächsten]
+   rot = Drehung in Grad · s = Seitenbeschriftung (Schlüssel = kleiner Buchstabe; fehlt eine Seite, steht ihr Buchstabe; s:false = keine)
+   fix = feste Pixel je Einheit (dann wächst das Dreieck sichtbar), org = [x,y] Lage des rechten Winkels bei fix */
+function rtSvg(o){
+  o=o||{};const e=o.e||["A","B","C"],r=o.r==null?2:o.r,L=o.L||[4,3],rot=(o.rot||0)*Math.PI/180;
+  const n=(r+1)%3,p=(r+2)%3,raw=[];raw[r]=[0,0];raw[n]=[L[0],0];raw[p]=[0,L[1]];
+  /* Regel: erste Ecke links unten, dann gegen den Uhrzeigersinn → Seite e0e1 waagerecht unten, e0 links; rot erzeugt nur eine leichte Neigung */
+  const phi=Math.atan2(raw[1][1]-raw[0][1],raw[1][0]-raw[0][0]),al=(Math.atan2(raw[2][1]-raw[0][1],raw[2][0]-raw[0][0])-phi)*180/Math.PI;
+  const kw=o.kipp!=null?o.kipp:(o.rot?((Math.round(o.rot)*7)%21+21)%21:0),kipp=Math.min(kw,Math.max(0,90-(((al%360)+360)%360)-3))*Math.PI/180,w0=-phi+kipp;
+  const pts=raw.map(([x,y])=>{x-=raw[0][0];y-=raw[0][1];return[x*Math.cos(w0)-y*Math.sin(w0),x*Math.sin(w0)+y*Math.cos(w0)];});
+  const pad=o.pad||(o.s&&Object.values(o.s).some(x=>String(x).length>2)?60:44),xs=pts.map(q=>q[0]),ys=pts.map(q=>q[1]),W=o.bw||300;
+  const dxs=(Math.max(...xs)-Math.min(...xs))||1,dys=(Math.max(...ys)-Math.min(...ys))||1,H=o.bh||Math.round(Math.max(130,Math.min(240,2*pad+(W-2*pad)*dys/dxs)));
+  let sc,ox,oy;
+  if(o.fix){sc=o.fix;ox=o.org[0];oy=o.org[1];}
+  else{sc=Math.min((W-2*pad)/((Math.max(...xs)-Math.min(...xs))||1),(H-2*pad)/((Math.max(...ys)-Math.min(...ys))||1));
+    ox=(W-sc*(Math.max(...xs)+Math.min(...xs)))/2;oy=(H+sc*(Math.max(...ys)+Math.min(...ys)))/2;}
+  const P=pts.map(([x,y])=>[ox+sc*x,oy-sc*y]),G=[(P[0][0]+P[1][0]+P[2][0])/3,(P[0][1]+P[1][1]+P[2][1])/3];
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Rechtwinkliges Dreieck '+e.join("")+'" style="width:'+(o.w||W)+'px;max-width:100%;height:auto;font-family:Arial,sans-serif">';
+  const u=gU(P[n][0]-P[r][0],P[n][1]-P[r][1]),v=gU(P[p][0]-P[r][0],P[p][1]-P[r][1]),ra=o.ra||24,cr=u[0]*v[1]-u[1]*v[0],bi=gU(u[0]+v[0],u[1]+v[1]);
+  s+='<path d="M'+P[r][0].toFixed(1)+' '+P[r][1].toFixed(1)+' L'+(P[r][0]+ra*u[0]).toFixed(1)+' '+(P[r][1]+ra*u[1]).toFixed(1)+' A'+ra+' '+ra+' 0 0 '+(cr>0?1:0)+' '+(P[r][0]+ra*v[0]).toFixed(1)+' '+(P[r][1]+ra*v[1]).toFixed(1)+' Z" fill="#e9e9e9" stroke="#000" stroke-width="1.3"/>';
+  s+='<circle cx="'+(P[r][0]+9.5*bi[0]).toFixed(1)+'" cy="'+(P[r][1]+9.5*bi[1]).toFixed(1)+'" r="2.8" fill="#000"/>';
+
+  if(o.wk!=null){const k=o.wk,i1=(k+1)%3,i2=(k+2)%3,uu=gU(P[i1][0]-P[k][0],P[i1][1]-P[k][1]),vv=gU(P[i2][0]-P[k][0],P[i2][1]-P[k][1]);
+    const l1=Math.hypot(P[i1][0]-P[k][0],P[i1][1]-P[k][1]),l2=Math.hypot(P[i2][0]-P[k][0],P[i2][1]-P[k][1]);
+    const lb=o.wl||"",fs=o.wfs||14,tw=0.58*fs*Math.max(lb.length,1),half=Math.acos(Math.max(-1,Math.min(1,uu[0]*vv[0]+uu[1]*vv[1])))/2;
+    let tR=Math.max(14,(tw/2+3)/Math.sin(half)),R=Math.min(0.55*Math.min(l1,l2),tR+tw/2+5);if(R<tR+tw/2)tR=Math.max(12,R-tw/2-1);
+    const cw=uu[0]*vv[1]-uu[1]*vv[0],bb=gU(uu[0]+vv[0],uu[1]+vv[1]);
+    s+='<path d="M'+P[k][0].toFixed(1)+' '+P[k][1].toFixed(1)+' L'+(P[k][0]+R*uu[0]).toFixed(1)+' '+(P[k][1]+R*uu[1]).toFixed(1)+' A'+R.toFixed(1)+' '+R.toFixed(1)+' 0 0 '+(cw>0?1:0)+' '+(P[k][0]+R*vv[0]).toFixed(1)+' '+(P[k][1]+R*vv[1]).toFixed(1)+' Z" fill="#FDEBDD" stroke="#C2410C" stroke-width="2"/>';
+    if(lb)s+=gT(P[k][0]+tR*bb[0],P[k][1]+tR*bb[1],lb,{bold:true,size:fs,fill:"#C2410C"});}
+  const lab=[];
+  for(let k=0;k<3;k++){
+    const i=(k+1)%3,j=(k+2)%3,nm=e[k].toLowerCase(),A=P[i],B=P[j],M=[(A[0]+B[0])/2,(A[1]+B[1])/2],d=gU(B[0]-A[0],B[1]-A[1]);
+    let nn=[-d[1],d[0]];if((M[0]-G[0])*nn[0]+(M[1]-G[1])*nn[1]<0)nn=[-nn[0],-nn[1]];
+    const f=(o.farbe&&o.farbe[nm])||"#000";
+    s+='<line class="seite" data-s="'+nm+'" x1="'+A[0].toFixed(1)+'" y1="'+A[1].toFixed(1)+'" x2="'+B[0].toFixed(1)+'" y2="'+B[1].toFixed(1)+'" stroke="'+f+'" stroke-width="'+(f==="#000"?3:5)+'" stroke-linecap="round"/>';
+    if(o.klick)s+='<line class="hit" data-s="'+nm+'" x1="'+A[0].toFixed(1)+'" y1="'+A[1].toFixed(1)+'" x2="'+B[0].toFixed(1)+'" y2="'+B[1].toFixed(1)+'" stroke="transparent" stroke-width="24" style="cursor:pointer"/>';
+    if(o.s!==false){const t=o.s&&o.s[nm]!=null?o.s[nm]:nm;if(t!==""){const off=13+Math.abs(nn[0])*t.length*4.6+Math.abs(nn[1])*6;
+      lab.push(gT(M[0]+off*nn[0],M[1]+off*nn[1],t,{it:t.length===1,size:o.fs||16,fill:f==="#000"?"#000":f,bold:f!=="#000"}));}}
+  }
+  s+=lab.join("");
+  for(let k=0;k<3;k++){const q=gU(P[k][0]-G[0],P[k][1]-G[1]);s+=gT(P[k][0]+17*q[0],P[k][1]+17*q[1],e[k],{bold:true,size:17});}
+  return s+'</svg>';
+}
+
+/* Verkehrsschild „Steigung“ */
+function schildSvg(){return '<img src="data:image/jpeg;base64,'+SCHILD+'" alt="Verkehrszeichen Steigung 12 %" style="width:96px;height:auto;display:block">';}
+function steigSvg(){const W=230,H=104,x0=16,y0=80,x1=206,y1=80-190*0.12*1.8;
+ let s='<svg viewBox="0 0 '+W+' '+H+'" style="width:210px;max-width:100%;height:auto" role="img" aria-label="Straße mit 12 % Steigung">';
+ s+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1+'" y2="'+y0+'" stroke="#2E7D32" stroke-width="3" stroke-dasharray="7 4"/>';
+ s+='<line x1="'+x1+'" y1="'+y0+'" x2="'+x1+'" y2="'+y1+'" stroke="#1565C0" stroke-width="3" stroke-dasharray="7 4"/>';
+ s+='<line x1="'+x0+'" y1="'+y0+'" x2="'+x1+'" y2="'+y1+'" stroke="#555" stroke-width="8" stroke-linecap="round"/><line x1="'+x0+'" y1="'+y0+'" x2="'+x1+'" y2="'+y1+'" stroke="#fff" stroke-width="1.5" stroke-dasharray="8 6"/>';
+ const a=Math.atan2(y0-y1,x1-x0);
+ s+='<path d="M'+x0+' '+y0+' L'+(x0+60)+' '+y0+' A60 60 0 0 0 '+(x0+60*Math.cos(a)).toFixed(1)+' '+(y0-60*Math.sin(a)).toFixed(1)+' Z" fill="#FDEBDD" stroke="#C2410C" stroke-width="2"/>';
+ s+=gT(x0+50,y0-5,"α",{bold:true,size:13,fill:"#C2410C"});
+ s+='<path d="M'+(x1-12)+' '+y0+' L'+(x1-12)+' '+(y0-12)+' L'+x1+' '+(y0-12)+'" fill="none" stroke="#000" stroke-width="1.3"/><circle cx="'+(x1-5)+'" cy="'+(y0-5)+'" r="2" fill="#000"/>';
+ s+=gT((x0+x1)/2,y0+15,"100 m waagerecht",{size:13,fill:"#2E7D32",bold:true});
+ s+=gT(x1-6,(y0+y1)/2,"12 m",{size:13,fill:"#1565C0",bold:true}).replace('text-anchor="middle"','text-anchor="end"');
+ s+=gT(W/2,10,"(Höhe überhöht gezeichnet)",{size:10,fill:"#666"});
+ return s+'</svg>';}
+document.querySelectorAll(".schild").forEach(d=>d.innerHTML=schildSvg());
+document.querySelectorAll(".steig").forEach(d=>d.innerHTML=steigSvg());
+function draw(d){d.innerHTML=rtSvg(JSON.parse(d.dataset.o));}
+document.querySelectorAll(".fig,.figm").forEach(draw);
+/* Seiten antippen: schwarz → rot (Hypotenuse) → blau (Gegenkathete) → grün (Ankathete) → schwarz */
+const FARB=["#000","#C62828","#1565C0","#2E7D32"];
+document.addEventListener("click",e=>{const h=e.target.closest(".hit");if(!h)return;const svg=h.closest("svg");
+  const l=svg.querySelector('.seite[data-s="'+h.dataset.s+'"]');const k=(FARB.indexOf(l.getAttribute("stroke"))+1)%4;
+  l.setAttribute("stroke",FARB[k]);l.setAttribute("stroke-width",k?5:3);});
+const pages=[...document.querySelectorAll(".page")],tabs=[...document.querySelectorAll(".tab")];
+function show(id){pages.forEach(p=>p.style.display=p.id===id?"block":"none");tabs.forEach(t=>t.classList.toggle("on",t.dataset.p===id));
+  try{history.replaceState(null,"","#"+id)}catch(e){};window.scrollTo(0,0)}
+tabs.forEach(t=>t.onclick=()=>show(t.dataset.p));
+function cur(){return pages.find(p=>p.style.display==="block")}
+document.addEventListener("keydown",e=>{if(e.key!=="Enter"||!e.target.matches("input.f"))return;e.preventDefault();
+  const l=[...cur().querySelectorAll("input.f")],i=l.indexOf(e.target);(l[i+1]||e.target).focus();if(!l[i+1])e.target.blur()});
+function clearPage(p){p.querySelectorAll("input.f").forEach(i=>i.value="");p.querySelectorAll(".fig").forEach(draw);}
+function armed(btn,action){const l=btn.textContent;btn.onclick=()=>{if(btn.dataset.a){clearTimeout(btn._t);delete btn.dataset.a;btn.textContent=l;btn.classList.remove("warn");action()}
+  else{btn.dataset.a=1;btn.textContent="Sicher? Nochmal tippen";btn.classList.add("warn");btn._t=setTimeout(()=>{delete btn.dataset.a;btn.textContent=l;btn.classList.remove("warn")},3500)}}}
+armed(document.getElementById("clr1"),()=>clearPage(cur()));
+armed(document.getElementById("clrA"),()=>pages.forEach(clearPage));
+const h0=location.hash.slice(1);show(["z1","z3","z4"].includes(h0)?h0:"z1");
+</script><script id="video-script">(()=>{
+/* ═══ Erklärvideo: Sprachausgabe mit Mitschreiben ═══
+   Jeder Schritt: t = gesprochener Text (ganze Sätze), f = Felder (data-k), die beim Sprechen ausgefüllt werden,
+   fig = Dreieck (data-fk), farbe = Seiten dauerhaft färben (h = Hypotenuse rot, g = Gegenkathete blau, a = Ankathete grün),
+   glow = Seiten aufleuchten lassen, q = Element hervorheben (CSS-Auswahl), kap = Beginn eines Abschnitts. */
+const ROT="#C62828",BLAU="#1565C0",GRUEN="#2E7D32",FC={h:ROT,g:BLAU,a:GRUEN};
+const JETZT_TIPP='Tipp: Du kannst die Seiten im Dreieck antippen und so färben. Rot für die Hypotenuse, blau für die Gegenkathete, grün für die Ankathete.';
+const SKRIPT={
+z1:[
+ {kap:'Die Seiten am Dreieck',t:'Hallo! Hier lernst du die Seiten im rechtwinkligen Dreieck kennen und danach den Sinus. Schau auf das Dreieck oben links. Der rechte Winkel liegt bei C. Wir betrachten den Winkel Alpha bei A.',fig:'z1-f0'},
+ {t:'Die längste Seite liegt dem rechten Winkel gegenüber. Sie heißt Hypotenuse.',f:['z1-0'],fig:'z1-f0',glow:['c']},
+ {t:'Die Kathete, die dem Winkel Alpha gegenüberliegt, heißt Gegenkathete.',f:['z1-1'],fig:'z1-f0',glow:['a']},
+ {t:'Die Kathete, die direkt am Winkel Alpha anliegt, heißt Ankathete.',f:['z1-2'],fig:'z1-f0',glow:['b']},
+ {t:'Achtung: Gegenkathete und Ankathete hängen vom Winkel ab. Schaust du vom anderen spitzen Winkel aus, tauschen die beiden ihre Namen. Die Hypotenuse bleibt immer dieselbe.',f:['z1-3']},
+ {kap:'Der Sinus',t:'Jetzt zum Sinus. Der Sinus von Alpha ist das Verhältnis von Gegenkathete zu Hypotenuse. Also: Sinus Alpha gleich Gegenkathete durch Hypotenuse.',f:['z1-4','z1-5'],fig:'z1-f0',glow:['a','c']},
+ {t:'Ist eine Seite gesucht, stellen wir die Formel um. Für die Gegenkathete gilt: a gleich c mal Sinus Alpha.',f:['z1-6']},
+ {t:'Für die Hypotenuse gilt: c gleich a geteilt durch Sinus Alpha.',f:['z1-7']},
+ {t:'Ist der Winkel gesucht, brauchen wir die Umkehrfunktion. Alpha gleich Sinus hoch minus eins von a durch c.',f:['z1-8','z1-9','z1-10']},
+ {kap:'So runden wir',t:'Noch ein Wort zum Runden. Winkel runden wir auf ganze Grad. Längen in Zentimetern runden wir auf Millimeter, also auf eine Stelle nach dem Komma.',q:'.rund'},
+ {t:'Bei Metern runden wir auf Zentimeter, also auf zwei Stellen. Bei Kilometern runden wir auf Meter, also auf drei Stellen.',q:'.rund'},
+ {t:'Ganz wichtig: Zwischenergebnisse rundest du nicht. Und dein Taschenrechner muss auf D stehen. D bedeutet Gradmaß.',q:'.rund'},
+ {kap:'Musterbeispiele: Seiten benennen',t:'Jetzt kommen die Musterbeispiele. Im ersten Dreieck liegt der rechte Winkel bei C.',f:['z1-11'],fig:'z1-f1'},
+ {t:'Gegenüber vom rechten Winkel liegt die Seite c. Sie ist die Hypotenuse.',f:['z1-12'],fig:'z1-f1',farbe:{c:'h'}},
+ {t:'Dem Winkel Alpha gegenüber liegt die Seite a. Sie ist die Gegenkathete.',f:['z1-13'],fig:'z1-f1',farbe:{a:'g'}},
+ {t:'Am Winkel Alpha liegt die Seite b an. Sie ist die Ankathete.',f:['z1-14'],fig:'z1-f1',farbe:{b:'a'}},
+ {t:'Also gilt: Sinus Alpha gleich a durch c.',f:['z1-15','z1-16'],fig:'z1-f1'},
+ {t:'Das zweite Dreieck ist gedreht. Davon lässt du dich nicht verwirren. Der rechte Winkel liegt bei E.',f:['z1-17'],fig:'z1-f2'},
+ {t:'Gegenüber vom rechten Winkel liegt die Seite e. Sie ist die Hypotenuse.',f:['z1-18'],fig:'z1-f2',farbe:{e:'h'}},
+ {t:'Der Winkel Delta liegt bei D. Ihm gegenüber liegt die Seite d. Sie ist die Gegenkathete.',f:['z1-19'],fig:'z1-f2',farbe:{d:'g'}},
+ {t:'Die Seite f liegt am Winkel Delta an. Sie ist die Ankathete.',f:['z1-20'],fig:'z1-f2',farbe:{f:'a'}},
+ {t:'Also gilt: Sinus Delta gleich d durch e.',f:['z1-21','z1-22'],fig:'z1-f2'},
+ {kap:'Musterbeispiel: Seite gesucht',t:'Jetzt rechnen wir. Im ersten Beispiel ist der Winkel Alpha fünfunddreißig Grad groß. Die Hypotenuse c ist acht Zentimeter lang. Gesucht ist die Seite a.',fig:'z1-f3',farbe:{c:'h',a:'g'}},
+ {t:'Zuerst überlegen wir, welche Funktion passt. a liegt dem Winkel gegenüber, ist also die Gegenkathete. c ist die Hypotenuse. Gegenkathete und Hypotenuse, das ist der Sinus.',fig:'z1-f3'},
+ {t:'Wir setzen ein: Sinus fünfunddreißig Grad gleich a durch acht Zentimeter.',f:['z1-23','z1-24']},
+ {t:'Jetzt stellen wir nach a um. Dazu multiplizieren wir beide Seiten mit acht Zentimetern. Wir erhalten: a gleich acht Zentimeter mal Sinus fünfunddreißig Grad.',f:['z1-25']},
+ {t:'In den Taschenrechner tippst du: acht, mal, Sinus, fünfunddreißig, gleich. Gerundet auf Millimeter ist a ungefähr vier Komma sechs Zentimeter.',f:['z1-26']},
+ {kap:'Musterbeispiel: Hypotenuse gesucht',t:'Im zweiten Beispiel ist der Winkel vierzig Grad groß. Die Seite a ist sechs Zentimeter lang. Gesucht ist die Hypotenuse c.',fig:'z1-f4',farbe:{a:'g',c:'h'}},
+ {t:'a ist die Gegenkathete und c die Hypotenuse. Also nehmen wir wieder den Sinus: Sinus vierzig Grad gleich sechs Zentimeter durch c.',f:['z1-27','z1-28']},
+ {t:'Diesmal steht das Gesuchte im Nenner. Wir multiplizieren mit c und teilen dann durch Sinus vierzig Grad. So erhalten wir: c gleich sechs Zentimeter geteilt durch Sinus vierzig Grad.',f:['z1-29']},
+ {t:'Gerundet ist c ungefähr neun Komma drei Zentimeter. Kontrolle: Die Hypotenuse ist immer die längste Seite. Neun Komma drei ist länger als sechs. Das passt.',f:['z1-30']},
+ {kap:'Musterbeispiel: Winkel gesucht',t:'Im dritten Beispiel sind zwei Seiten gegeben. a ist drei Zentimeter lang und c fünf Zentimeter. Gesucht ist der Winkel Alpha.',fig:'z1-f5',farbe:{a:'g',c:'h'}},
+ {t:'a ist die Gegenkathete und c die Hypotenuse. Also: Sinus Alpha gleich drei Zentimeter durch fünf Zentimeter.',f:['z1-31','z1-32']},
+ {t:'Um den Winkel zu bekommen, verwenden wir die Umkehrfunktion. Alpha gleich Sinus hoch minus eins von drei durch fünf.',f:['z1-33','z1-34']},
+ {t:'Am Casio geht das so: Zuerst den Bruch drei durch fünf eingeben und Gleich drücken. Dann Shift, dann die Sinus-Taste, dann Ans und zum Schluss Gleich.',q:'.tasten'},
+ {t:'Gerundet ist Alpha ungefähr siebenunddreißig Grad.',f:['z1-35']},
+ {kap:'Jetzt ihr',t:'Jetzt bist du dran! Bearbeite die Aufgaben im Kasten Jetzt ihr selbstständig. '+JETZT_TIPP+' Wenn du fertig bist, wähle ganz oben Z3. Dort geht es mit dem Kosinus weiter.',box:'Jetzt ihr'}
+],
+z3:[
+ {kap:'Der Kosinus',t:'Jetzt geht es um den Kosinus. Schau wieder auf das Dreieck und den Winkel Alpha bei A.',fig:'z3-f0'},
+ {t:'Der Kosinus von Alpha ist das Verhältnis von Ankathete zu Hypotenuse. Also: Kosinus Alpha gleich Ankathete durch Hypotenuse.',f:['z3-0','z3-1'],fig:'z3-f0',glow:['b','c']},
+ {t:'Ist die Ankathete gesucht, gilt: b gleich c mal Kosinus Alpha.',f:['z3-2']},
+ {t:'Ist die Hypotenuse gesucht, gilt: c gleich b geteilt durch Kosinus Alpha.',f:['z3-3']},
+ {t:'Ist der Winkel gesucht: Alpha gleich Kosinus hoch minus eins von b durch c.',f:['z3-4','z3-5','z3-6']},
+ {t:'Gerundet wird wie beim Sinus: Winkel auf ganze Grad, Zentimeter auf Millimeter.',q:'.fz'},
+ {kap:'Musterbeispiel: Seite gesucht',t:'Jetzt die Musterbeispiele. Im ersten Beispiel ist Alpha fünfunddreißig Grad groß. Die Hypotenuse c ist acht Zentimeter lang. Gesucht ist die Seite b.',fig:'z3-f1',farbe:{c:'h',b:'a'}},
+ {t:'b liegt am Winkel Alpha an, ist also die Ankathete. Ankathete und Hypotenuse, das ist der Kosinus.',fig:'z3-f1'},
+ {t:'Wir setzen ein: Kosinus fünfunddreißig Grad gleich b durch acht Zentimeter.',f:['z3-7','z3-8']},
+ {t:'Wir multiplizieren beide Seiten mit acht Zentimetern: b gleich acht Zentimeter mal Kosinus fünfunddreißig Grad.',f:['z3-9']},
+ {t:'Gerundet ist b ungefähr sechs Komma sechs Zentimeter.',f:['z3-10']},
+ {kap:'Musterbeispiel: Hypotenuse gesucht',t:'Im zweiten Beispiel ist der Winkel vierzig Grad groß. Die Ankathete b ist sechs Zentimeter lang. Gesucht ist die Hypotenuse c.',fig:'z3-f2',farbe:{b:'a',c:'h'}},
+ {t:'Wir setzen ein: Kosinus vierzig Grad gleich sechs Zentimeter durch c.',f:['z3-11','z3-12']},
+ {t:'c steht im Nenner. Darum gilt: c gleich sechs Zentimeter geteilt durch Kosinus vierzig Grad.',f:['z3-13']},
+ {t:'Gerundet ist c ungefähr sieben Komma acht Zentimeter. Das ist länger als sechs Zentimeter. Die Hypotenuse ist also wirklich die längste Seite.',f:['z3-14']},
+ {kap:'Musterbeispiel: Winkel gesucht',t:'Im dritten Beispiel kennen wir b gleich vier Zentimeter und c gleich fünf Zentimeter. Gesucht ist der Winkel Alpha.',fig:'z3-f3',farbe:{b:'a',c:'h'}},
+ {t:'b ist die Ankathete und c die Hypotenuse. Also: Kosinus Alpha gleich vier Zentimeter durch fünf Zentimeter.',f:['z3-15','z3-16']},
+ {t:'Mit der Umkehrfunktion: Alpha gleich Kosinus hoch minus eins von vier durch fünf.',f:['z3-17','z3-18']},
+ {t:'Am Casio: Zuerst vier durch fünf eingeben und Gleich drücken. Dann Shift, dann die Kosinus-Taste, dann Ans und Gleich.',q:'.tasten'},
+ {t:'Gerundet ist Alpha ungefähr siebenunddreißig Grad.',f:['z3-19']},
+ {kap:'Jetzt ihr',t:'Jetzt bist du dran! Bearbeite die Aufgaben im Kasten Jetzt ihr selbstständig. '+JETZT_TIPP+' Wenn du fertig bist, wähle ganz oben Z4. Dort geht es mit dem Tangens weiter.',box:'Jetzt ihr'}
+],
+z4:[
+ {kap:'Der Tangens',t:'Jetzt kommt der Tangens. Wir schauen wieder auf den Winkel Alpha bei A.',fig:'z4-f0'},
+ {t:'Der Tangens von Alpha ist das Verhältnis von Gegenkathete zu Ankathete. Also: Tangens Alpha gleich Gegenkathete durch Ankathete.',f:['z4-0','z4-1'],fig:'z4-f0',glow:['a','b']},
+ {t:'Ist die Gegenkathete gesucht, gilt: a gleich b mal Tangens Alpha.',f:['z4-2']},
+ {t:'Ist die Ankathete gesucht, gilt: b gleich a geteilt durch Tangens Alpha.',f:['z4-3']},
+ {t:'Ist der Winkel gesucht: Alpha gleich Tangens hoch minus eins von a durch b.',f:['z4-4','z4-5','z4-6']},
+ {t:'Wichtig: Beim Tangens kommt die Hypotenuse nicht vor. Er arbeitet nur mit den beiden Katheten. Gerundet wird wie beim Sinus.',f:['z4-7']},
+ {kap:'Steigung in Prozent',t:'Den Tangens brauchst du zum Beispiel bei Steigungen. Schau auf das Verkehrsschild. Es warnt vor einer Steigung von zwölf Prozent.',q:'.schild'},
+ {t:'Zwölf Prozent bedeutet: Auf hundert Meter waagerecht steigt die Straße um zwölf Meter.',f:['z4-8','z4-9'],q:'.steig'},
+ {t:'Die zwölf Meter Höhe sind die Gegenkathete. Die hundert Meter waagerecht sind die Ankathete. Also: Tangens Alpha gleich zwölf durch hundert.',f:['z4-10','z4-11'],q:'.steig'},
+ {t:'Mit Tangens hoch minus eins erhalten wir: Alpha ist ungefähr sieben Grad.',f:['z4-12']},
+ {t:'Achtung, Falle: Die hundert Meter werden waagerecht gemessen, nicht entlang der Straße.',f:['z4-13']},
+ {kap:'Musterbeispiel: Seite gesucht',t:'Jetzt die Musterbeispiele. Im ersten Beispiel ist Alpha fünfunddreißig Grad groß. Die Ankathete b ist sechs Zentimeter lang. Gesucht ist die Gegenkathete a.',fig:'z4-f1',farbe:{b:'a',a:'g'}},
+ {t:'Gegenkathete und Ankathete, das ist der Tangens. Wir setzen ein: Tangens fünfunddreißig Grad gleich a durch sechs Zentimeter.',f:['z4-14','z4-15']},
+ {t:'Wir multiplizieren beide Seiten mit sechs Zentimetern: a gleich sechs Zentimeter mal Tangens fünfunddreißig Grad.',f:['z4-16']},
+ {t:'Gerundet ist a ungefähr vier Komma zwei Zentimeter.',f:['z4-17']},
+ {kap:'Musterbeispiel: Ankathete gesucht',t:'Im zweiten Beispiel ist der Winkel vierzig Grad groß. Die Gegenkathete a ist sechs Zentimeter lang. Gesucht ist die Ankathete b.',fig:'z4-f2',farbe:{a:'g',b:'a'}},
+ {t:'Wir setzen ein: Tangens vierzig Grad gleich sechs Zentimeter durch b.',f:['z4-18','z4-19']},
+ {t:'b steht im Nenner. Darum gilt: b gleich sechs Zentimeter geteilt durch Tangens vierzig Grad.',f:['z4-20']},
+ {t:'Gerundet ist b ungefähr sieben Komma zwei Zentimeter.',f:['z4-21']},
+ {kap:'Musterbeispiel: Winkel gesucht',t:'Im dritten Beispiel kennen wir a gleich drei Zentimeter und b gleich vier Zentimeter. Gesucht ist der Winkel Alpha.',fig:'z4-f3',farbe:{a:'g',b:'a'}},
+ {t:'Wir setzen ein: Tangens Alpha gleich drei Zentimeter durch vier Zentimeter.',f:['z4-22','z4-23']},
+ {t:'Mit der Umkehrfunktion: Alpha gleich Tangens hoch minus eins von drei durch vier.',f:['z4-24','z4-25']},
+ {t:'Am Casio: Zuerst drei durch vier eingeben und Gleich drücken. Dann Shift, dann die Tangens-Taste, dann Ans und Gleich.',q:'.tasten'},
+ {t:'Gerundet ist Alpha ungefähr siebenunddreißig Grad.',f:['z4-26']},
+ {kap:'Die Rampenfrage',t:'Zum Schluss lösen wir die Rampenfrage aus der Stunde. Es gibt drei Rampen, die gleich steil aussehen. Welche ist wirklich am steilsten?',box:'Auflösung: Welche Rampe ist am steilsten?'},
+ {t:'Bei der Holzrampe kennen wir die Höhe von einem Meter und die Fahrbahn von drei Metern. Die Fahrbahn ist die schräge Seite, also die Hypotenuse.',box:'Auflösung: Welche Rampe ist am steilsten?'},
+ {t:'Höhe und Hypotenuse, das ist der Sinus. Also: Sinus Alpha gleich eins durch drei.',f:['z4-38','z4-39','z4-40']},
+ {t:'Mit Sinus hoch minus eins erhalten wir: Alpha ist ungefähr neunzehn Grad.',f:['z4-41']},
+ {t:'Bei der Betonrampe ist die Steigung dreißig Prozent. Eine Steigung ist Höhe durch waagerechte Strecke, also ein Tangens.',f:['z4-42']},
+ {t:'Dreißig Prozent sind null Komma drei. Also: Tangens Alpha gleich null Komma drei.',f:['z4-43']},
+ {t:'Mit Tangens hoch minus eins erhalten wir: Alpha ist ungefähr siebzehn Grad.',f:['z4-44']},
+ {t:'Die Metallrampe hat fünfzehn Grad. Neunzehn Grad ist der größte Winkel. Am steilsten ist also die Holzrampe.',f:['z4-45']},
+ {t:'Merke dir: Die Fahrbahn ist die Hypotenuse. Darum rechnet man bei der Holzrampe mit dem Sinus und nicht mit dem Tangens.',f:['z4-46','z4-47']},
+ {kap:'Jetzt ihr',t:'Jetzt bist du dran! Bearbeite die Aufgaben im Kasten Jetzt ihr selbstständig. '+JETZT_TIPP+' Damit hast du Sinus, Kosinus und Tangens geschafft. Zum Wiederholen kannst du oben Z1 plus Z2 oder Z3 wählen.',box:'Jetzt ihr'}
+]};
+
+/* ─── Sprachausgabe ─── */
+const synth=window.speechSynthesis;let stimme=null;
+function waehleStimme(){if(!synth)return;const v=synth.getVoices().filter(x=>/^de/i.test(x.lang));
+ stimme=v.find(x=>/natural/i.test(x.name)&&/de-DE/i.test(x.lang))||v.find(x=>/google deutsch/i.test(x.name))||v.find(x=>/anna|helena|petra|markus|yannick/i.test(x.name)&&/de-DE/i.test(x.lang))||v.find(x=>/de-DE/i.test(x.lang))||v[0]||null;}
+if(synth){waehleStimme();try{synth.addEventListener('voiceschanged',waehleStimme)}catch(e){synth.onvoiceschanged=waehleStimme}}
+const saetze=t=>t.match(/[^.!?]+[.!?]*/g).map(s=>s.trim()).filter(Boolean);
+
+let lauf=null;         // {id, schritte, i, pausiert, token}
+let token=0,wachhund=null;
+function stopWachhund(){if(wachhund){clearTimeout(wachhund);wachhund=null;}}
+
+/* spricht eine Liste von Sätzen nacheinander; fertig() nur, wenn nicht abgebrochen */
+function sprich(liste,fertig){
+ const my=++token;let k=0;
+ const weiter=()=>{if(my!==token)return;stopWachhund();
+  if(k>=liste.length){fertig();return;}
+  const text=liste[k++];let u;
+  try{u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.92;if(stimme)u.voice=stimme;}catch(e){keineStimme();return;}
+  let gestartet=false;
+  u.onstart=()=>{if(my!==token)return;gestartet=true;stopWachhund();
+    wachhund=setTimeout(()=>{if(my===token){synth.cancel();weiter();}},text.length*110+5000);};
+  u.onend=()=>{if(my===token)weiter();};
+  u.onerror=e=>{if(my!==token)return;if(e&&(e.error==='interrupted'||e.error==='canceled'))return;weiter();};
+  synth.speak(u);
+  wachhund=setTimeout(()=>{if(my===token&&!gestartet)keineStimme();},6000);
+ };
+ weiter();
+}
+function keineStimme(){const r=lauf;stopAlles();if(r)status(r.id,'Keine Sprachausgabe. iPad: Stummschalter und Lautstärke prüfen. Computer: Chrome, Edge oder Safari verwenden.');}
+function abbrechen(){token++;stopWachhund();if(synth)synth.cancel();}
+
+/* ─── Hervorhebungen ─── */
+const page=id=>document.getElementById(id);
+const feld=k=>document.querySelector('input.f[data-k="'+k+'"]');
+const fig=k=>document.querySelector('[data-fk="'+k+'"]');
+function linie(fk,s){const d=fig(fk);return d&&d.querySelector('.seite[data-s="'+s+'"]');}
+function boxMit(p,titel){return [...p.querySelectorAll('.box')].find(b=>b.querySelector('h3')?.textContent.trim()===titel);}
+let aktiv=[];
+function markiereAus(){aktiv.forEach(el=>el.classList.remove('speaking','vglow'));aktiv=[];}
+function markiere(el,cls){if(!el)return;el.classList.add(cls||'speaking');aktiv.push(el);}
+/* dauerhafte Wirkung eines Schritts (auch beim Überspringen) */
+function wirkung(st){
+ (st.f||[]).forEach(k=>{const i=feld(k);if(i)i.value=i.dataset.l;});
+ if(st.farbe)Object.entries(st.farbe).forEach(([s,c])=>{const l=linie(st.fig,s);if(l){l.setAttribute('stroke',FC[c]);l.setAttribute('stroke-width',5);}});
+}
+function zeige(st,p){
+ markiereAus();wirkung(st);
+ (st.f||[]).forEach(k=>markiere(feld(k)));
+ (st.glow||[]).forEach(s=>markiere(linie(st.fig,s),'vglow'));
+ if(st.farbe)Object.keys(st.farbe).forEach(s=>markiere(linie(st.fig,s),'vglow'));
+ let ziel=null;
+ if(st.q){const el=p.querySelector(st.q);markiere(el);ziel=el;}
+ if(st.box){const b=boxMit(p,st.box);if(b){b.scrollIntoView({block:'start',behavior:'smooth'});ziel=null;}}
+ const f0=(st.f||[]).map(feld).find(Boolean);
+ ziel=ziel||(st.fig?fig(st.fig):null)||f0;
+ if(ziel)ziel.scrollIntoView({block:'center',behavior:'smooth'});
+}
+
+/* ─── Ablauf ─── */
+function status(id,t){const c=page(id)?.querySelector('.videoctl .status');if(c)c.textContent=t;}
+function knoepfe(){document.querySelectorAll('.videoctl').forEach(c=>{const an=lauf&&lauf.id===c.parentNode.id;
+ c.querySelector('.pause').textContent=an&&lauf.pausiert?'▶ Weiter':'⏸ Pause';
+ c.querySelector('.pause').disabled=!an;c.querySelector('.zur').disabled=!an;c.querySelector('.vor').disabled=!an;});}
+function schritt(){
+ const r=lauf;if(!r||r.pausiert)return;
+ if(r.i>=r.schritte.length){markiereAus();status(r.id,'Erklärung beendet');lauf=null;knoepfe();return;}
+ const st=r.schritte[r.i],p=page(r.id);
+ zeige(st,p);kapitelAnzeige(r);
+ status(r.id,'Schritt '+(r.i+1)+' von '+r.schritte.length);
+ sprich(saetze(st.t),()=>{if(lauf!==r)return;r.i++;schritt();});
+}
+function kapitelAnzeige(r){const sel=page(r.id).querySelector('.videoctl select');let k=0;
+ r.schritte.forEach((s,i)=>{if(s.kap&&i<=r.i)k=i;});sel.value=String(k);}
+function starte(id,ab){
+ abbrechen();markiereAus();
+ const schritte=SKRIPT[id];ab=ab||0;
+ schritte.slice(0,ab).forEach(wirkung);
+ lauf={id,schritte,i:ab,pausiert:false};knoepfe();
+ const los=()=>{if(lauf&&lauf.id===id)schritt();};
+ if(synth&&synth.speaking)setTimeout(los,80);else los();
+}
+function springe(n){const r=lauf;if(!r)return;abbrechen();
+ n=Math.max(0,Math.min(r.schritte.length-1,n));
+ if(n>r.i)r.schritte.slice(r.i,n).forEach(wirkung);
+ r.i=n;r.pausiert=false;knoepfe();setTimeout(schritt,80);}
+function pause(){const r=lauf;if(!r)return;
+ if(r.pausiert){r.pausiert=false;knoepfe();schritt();}        // Satz von vorn – funktioniert auch auf dem iPad
+ else{r.pausiert=true;abbrechen();status(r.id,'Pausiert – tippe auf ▶ Weiter');knoepfe();}}
+function stopAlles(){abbrechen();markiereAus();if(lauf){status(lauf.id,'Gestoppt');}lauf=null;knoepfe();}
+
+/* Prüfen, ob schon eigene Einträge überschrieben würden */
+function eigeneEintraege(id){return [...page(id).querySelectorAll('input.f[data-l]')].some(i=>i.value.trim()!==''&&i.value.trim()!==i.dataset.l);}
+
+/* ─── Bedienleiste je Seite ─── */
+for(const p of document.querySelectorAll('.page')){
+ const id=p.id,sk=SKRIPT[id];if(!sk)continue;
+ const c=document.createElement('div');c.className='videoctl';
+ const opts=sk.map((s,i)=>s.kap?'<option value="'+i+'">'+s.kap+'</option>':'').join('');
+ c.innerHTML='<span class="hint">Tippe auf ▶ Start, um dir die Erklärung anzuhören.</span>'+
+  '<button class="go" type="button">▶ Start</button><button class="pause" type="button">⏸ Pause</button>'+
+  '<button class="zur" type="button" title="Einen Schritt zurück">◀ Zurück</button><button class="vor" type="button" title="Einen Schritt weiter">Vor ▶</button>'+
+  '<button class="stop" type="button">■ Stopp</button>'+
+  '<label class="kap">Abschnitt: <select>'+opts+'</select></label><span class="status" aria-live="polite"></span>';
+ p.insertBefore(c,p.firstChild);
+ const go=c.querySelector('.go'),sel=c.querySelector('select');
+ if(!synth||typeof SpeechSynthesisUtterance==='undefined'){c.querySelector('.status').textContent='Sprachausgabe in diesem Browser nicht verfügbar';}
+ let warn=null;
+ const startMitPruefung=ab=>{
+  if(!warn&&eigeneEintraege(id)){warn=setTimeout(()=>{warn=null;go.textContent='▶ Start';go.classList.remove('warn');},4000);
+   go.textContent='Deine Einträge werden überschrieben – nochmal tippen';go.classList.add('warn');go.dataset.ab=ab;return;}
+  clearTimeout(warn);warn=null;go.textContent='▶ Start';go.classList.remove('warn');delete go.dataset.ab;starte(id,+ab||0);};
+ go.onclick=()=>startMitPruefung(go.dataset.ab||0);
+ sel.onchange=()=>{if(lauf&&lauf.id===id)springe(+sel.value);else{go.dataset.ab=sel.value;startMitPruefung(sel.value);}};
+ c.querySelector('.pause').onclick=pause;
+ c.querySelector('.zur').onclick=()=>lauf&&springe(lauf.i-1);
+ c.querySelector('.vor').onclick=()=>lauf&&springe(lauf.i+1);
+ c.querySelector('.stop').onclick=stopAlles;
+}
+knoepfe();
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',stopAlles));
+window.addEventListener('pagehide',()=>{if(synth)synth.cancel();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&lauf&&!lauf.pausiert)pause();});
+})();
+</script></body></html>
